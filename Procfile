@@ -1,4 +1,4 @@
-web: node lib/server.js $PORT
+web: node node/lib/server.js $PORT
 
 
 
