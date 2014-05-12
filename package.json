@@ -2,11 +2,11 @@
   "name": "Moss_Mobile_Assignment_2",
   "description": "Maintenance Sharing App",
   "keywords": ["Machine Maintenance"],
-  "version": "0.0.2",
-  "homepage": "https://github.com/rjrodger/social-example",
-  "author": "Richard Rodger <richard@ricebridge.com> (http://richardrodger.com/)",
+  "version": "1.0.0",
+  "homepage": "https://github.com/mossie12345/MWD-Assingment02",
+  "author": "Maurice O Donnell",
   "contributors": [
-    "Richard Rodger <richard@ricebridge.com> (http://richardrodger.com/)", "Frank Walsh <fxwalsh@wit.ie>"
+    "Maurice O Donnell"
   ],
   "dependencies": {
     "dispatch": "*",
