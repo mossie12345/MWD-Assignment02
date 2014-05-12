@@ -16,8 +16,7 @@
     "everyauth": "*",
     "node-oauth": "*",
     "twitter": "*",
-    "facebook-client": "*",
-    "data-capsule":"https://github.com/fwwalsh/data-capsule.git"
+    "facebook-client": "*"
   },
   "engines": {
     "node": ">=0.4"
