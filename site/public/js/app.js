@@ -163,7 +163,7 @@ bb.init = function() {
       else {
       //  self.elem.repairs_btn.hide()
 		//self.elem.failures_btn.hide()
-        self.elem.logout_btn.hide()
+        self.elem.logout_btn.show()
 		self.elem.intro_section.show()
 		self.elem.choice_section.hide()
       }
