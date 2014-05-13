@@ -156,6 +156,8 @@ bb.init = function() {
       if( user ) {
       //  self.elem.repairs_btn.show()
 		//self.elem.failures_btn.hide()
+		
+		alert("User object has been set");
         self.elem.logout_btn.show()
 		self.elem.intro_section.hide()
 		self.elem.choice_section.show()
@@ -163,7 +165,8 @@ bb.init = function() {
       else {
       //  self.elem.repairs_btn.hide()
 		//self.elem.failures_btn.hide()
-        self.elem.logout_btn.show()
+		alert("User object has NOT been set");
+        self.elem.logout_btn.hide()
 		self.elem.intro_section.show()
 		self.elem.choice_section.hide()
       }
