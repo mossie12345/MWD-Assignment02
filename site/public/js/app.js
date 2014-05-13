@@ -126,7 +126,7 @@ bb.init = function() {
   //      cb( list )
   //    })
   //  }
- // }
+  }
   )
 
 
