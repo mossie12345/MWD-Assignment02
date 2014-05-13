@@ -55,8 +55,8 @@ bb.init = function() {
 
     init: function(){
       var self = this
-    //  var death = new Date()
-    //  self.set({death:death})
+      var death = new Date()
+      self.set({death:death})
     },
 
    // calcdeath: function(){
