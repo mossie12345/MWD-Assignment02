@@ -57,6 +57,8 @@ exports.get_user = function( req, res, next ) {
     clean_user.id       = req.user.id
     clean_user.username = req.user.username
     clean_user.service  = req.user.service
+	
+	console.log( 'User cleaned ' + clean_user.username)
   }
 
   common.util.sendjson(res,clean_user)

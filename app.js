@@ -1,4 +1,4 @@
-export ROOT_URL='http://10.20.101.192:8180'
+export ROOT_URL='http://nameless-fjord-3113.herokuapp.com/'
 var server = require('./lib/server')
 server.start()
 
