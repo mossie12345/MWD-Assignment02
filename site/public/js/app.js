@@ -50,83 +50,84 @@ bb.init = function() {
     initialize: function( items ) {
       var self = this
       _.bindAll(self)
-      self.on('entry-update',self.calcdeath)
+      //self.on('entry-update',self.calcdeath)
     },
 
     init: function(){
       var self = this
-      var death = new Date()
-      self.set({death:death})
+    //  var death = new Date()
+    //  self.set({death:death})
     },
 
-    calcdeath: function(){
-      var self = this
-      var death = new Date()
-      self.sortlist(function(list){
-        var balance = 0
-        var last_income = 0
-        var last_expend = 0
-        var last_month_date
-        var last_type
+   // calcdeath: function(){
+   //   var self = this
+   //   var death = new Date()
+   //   self.sortlist(function(list){
+   //     var balance = 0
+   //     var last_income = 0
+   //     var last_expend = 0
+   //     var last_month_date
+   //     var last_type
 
-        for( var i = 0; i < list.length; i++ ) {
-          var entry = list[i]
+   //     for( var i = 0; i < list.length; i++ ) {
+   //       var entry = list[i]
 
-          balance += (('expend'==entry.type?-1:1) * entry.amount)
+   //       balance += (('expend'==entry.type?-1:1) * entry.amount)
 
-          if( last_type == entry.type ) {
-            balance += (('expend'==last_type?1:-1) * ('expend'==last_type?last_income:last_expend))
-          }
+   //       if( last_type == entry.type ) {
+   //         balance += (('expend'==last_type?1:-1) * ('expend'==last_type?last_income:last_expend))
+   //       }
 
-          if( balance <= 0 ) {
-            death = app.util.monthend(entry.month)
-            self.set({death:death})
-            break
-          }
+   //       if( balance <= 0 ) {
+   //         death = app.util.monthend(entry.month)
+   //         self.set({death:death})
+   //         break
+   //       }
 
-          last_month_date = app.util.monthend(entry.month)
-          last_type = entry.type
+   //       last_month_date = app.util.monthend(entry.month)
+   //       last_type = entry.type
 
-          if( 'expend'==entry.type ) {
-            last_expend = entry.amount
-          }
-          else {
-            last_income = entry.amount
-          }
+   //       if( 'expend'==entry.type ) {
+   //         last_expend = entry.amount
+   //       }
+   //       else {
+   //         last_income = entry.amount
+   //       }
 
 
-        }
+   //     }
 
-        if( 0 < balance ) {
-          var maxmillislife = 5 * 365 * 24 * 60 * 60 * 1000
-          var millislife = maxmillislife
+  //      if( 0 < balance ) {
+  //        var maxmillislife = 5 * 365 * 24 * 60 * 60 * 1000
+  //        var millislife = maxmillislife
 
-          if( last_income < last_expend ) {
-            var coverm = balance / (last_expend-last_income);
-            var millislife = Math.min(maxmillislife,coverm * 30 * 24 * 60 * 60 * 1000)
-          }
+  //        if( last_income < last_expend ) {
+  //          var coverm = balance / (last_expend-last_income);
+  //          var millislife = Math.min(maxmillislife,coverm * 30 * 24 * 60 * 60 * 1000)
+  //        }
         
-          death = last_month_date ? new Date( last_month_date.getTime()+millislife ) : death
-          self.set({death:death})
-        }
+  //        death = last_month_date ? new Date( last_month_date.getTime()+millislife ) : death
+  //        self.set({death:death})
+  //      }
 
-      })
-    },
+  //    })
+  //  },
 
-    sortlist: function(cb) {
-      app.dc.list({},function(err,list){
-        if( err ) return console.log(err);
-        list.sort(function(a,b){
-          if( a.month == b.month ) {
-            return 'income'==a.type?-1:1;
-          }
-          else return a.month - b.month;
-        })
+ //   sortlist: function(cb) {
+ //     app.dc.list({},function(err,list){
+ //       if( err ) return console.log(err);
+ //       list.sort(function(a,b){
+ //         if( a.month == b.month ) {
+ //           return 'income'==a.type?-1:1;
+ //         }
+ //         else return a.month - b.month;
+ //       })
 
-        cb( list )
-      })
-    }
-  })
+  //      cb( list )
+  //    })
+  //  }
+ // }
+  )
 
 
   bb.view.Header = Backbone.View.extend({    
@@ -153,7 +154,7 @@ bb.init = function() {
 
       var user = app.model.state.get('user')
       
-      if( user.id ) {
+      if( user ) {
       //  self.elem.repairs_btn.show()
 		//self.elem.failures_btn.hide()
 		
