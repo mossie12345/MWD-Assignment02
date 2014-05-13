@@ -153,7 +153,7 @@ bb.init = function() {
 
       var user = app.model.state.get('user')
       
-      if( user ) {
+      if( user.id ) {
       //  self.elem.repairs_btn.show()
 		//self.elem.failures_btn.hide()
 		
