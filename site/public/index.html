@@ -22,7 +22,7 @@
   <script src="js/underscore.js"></script>
   <script src="js/backbone.js"></script>
   <script src="js/util.js"></script>
-  <script src="js/data-capsule-client.js"></script>
+ <!-- <script src="js/data-capsule-client.js"></script> -->
   <script src="js/app.js"></script>
   
   <script type="text/javascript">
@@ -38,8 +38,6 @@
 <div id="main" data-role="page">
   <div class="header" data-role="header" data-position="fixed">
     <h1>Maintenance</h1>
-    <!--  <a id="header_repairs"  href="#auth" data-role="button" class="ui-btn-right" style="font-size:0.9em">Repairs</a>    
-	<a id="header_failures"  href="#auth" data-role="button" class="ui-btn-right" style="font-size:0.9em">Failures</a>      -->	
 	<a id="header_logout" href="/logout" rel="external" data-role="button" class="ui-btn-right" style="font-size:0.9em">Logout</a>  
   </div>
 
@@ -52,10 +50,6 @@
 		<h3>Please login via Twitter account to proceed</h3>
 		
 		<div id="auth" data-role="content" data-add-back-btn="true">
-		<!--  <div class="header" data-role="header" data-position="fixed">
-			<h1>Login</h1>
-		  </div> -->
-		
 		  <div data-role="content">			
 			<a href="/auth/twitter"  rel="external" data-role="button" data-iconpos="right" class="social_login twitter_login">Twitter</a>				
 		  </div>
@@ -72,59 +66,11 @@
 		</div>
 	</div>
 
-	
 
-    <!--<div class="clock" id="deathbg">
-      <div id="death" class="digits"></div>
-      <div class="labels">
-        <div class="year"></div>
-        <div class="month"></div>
-        <div class="week"></div>
-        <div class="day"></div>
-      </div>
-    </div> 
-    
-    <br>
-           
-    <div class="clock" id="deathbg1">
-      <div id="death1" class="digits"></div>
-      <div class="labels">
-        <div class="hour"></div>
-        <div class="minute"></div>
-        <div class="second"></div>
-      </div>
-    </div>
-
-    <h3>Enter your own numbers</h3>
-
-    <div data-role="controlgroup" data-type="horizontal" class="minibuttons">
-      <a href="#income" data-role="button" data-transition="slide">Income</a>
-      <a href="#expend" data-role="button" data-transition="slide">Expend</a>
-      <a onclick="localStorage.clear();window.location='/'" data-role="button" data-transition="slide" style="width:92px;font-size:0.7em">Reset</a>
-    </div>
-
-    <div data-role="controlgroup" data-type="horizontal" class="minibuttons">
-      <a id="social_msg_twitter"  data-role="button" data-iconpos="right" class="social_msg twitter_msg ui-corner-right ui-corner-left">tweet</a>
-      <a id="social_msg_facebook" data-role="button" data-iconpos="right" class="social_msg facebook_msg ui-corner-right ui-corner-left">post</a>
-    </div>   -->
   </div>
 
 </div>
 
-
-<!--<div id="income" data-role="page" data-add-back-btn="true">
-  <div class="header" data-role="header" data-position="fixed">
-    <h1>Income</h1>
-  </div>
-
-  <div data-role="content">
-    <div id="income_list" class="ui-grid-a">
-    </div>
-
-    <h3>Last month is carried forward</h3>
-    <a id="income_more" data-role="button" style="font-size:0.9em">Add Month</a>
-  </div>
-</div>  -->
 
 <div id="repairs" data-role="page" data-add-back-btn="true">
   <div class="header" data-role="header" data-position="fixed">
@@ -134,7 +80,7 @@
   <div data-role="content">  
   
 	  <p class="formfield">
-		<label for="textarea">Fault Description</label>
+		<label for="textarea">Repair Description</label>
 		<textarea id="textarea" rows="5" cols="10"> </textarea>
 	  </p>
 	  
@@ -160,6 +106,40 @@
 </div>
 
 
+<div id="failures" data-role="page" data-add-back-btn="true">
+  <div class="header" data-role="header" data-position="fixed">
+    <h1>Failures</h1>
+  </div>
+
+  <div data-role="content">  
+  
+	  <p class="formfield">
+		<label for="textarea">Fault Description</label>
+		<textarea id="textarea1" rows="5" cols="10"> </textarea>
+	  </p>
+	  
+	  <p class="formfield">	  
+		  <label for="machines">Select Machine</label>
+		  <select id="Select1">
+			  <option value="machine1">Machine 1</option>
+			  <option value="machine2">Machine 2</option>
+			  <option value="machine3">Machine 3</option>
+			  <option value="machine4">Machine 4</option>
+			  <option value="machine5">Machine 5</option>
+			  <option value="machine6">Machine 6</option>
+		  </select> 
+	 </p>
+	
+	    <input type="file" accept="image/*" capture="camera">
+		<button id="failures_snap" class="snap">Take Photo</button>
+		<img id="failures_photo" width="640" height="480"></img>	
+		<button id="failures_delete">Delete Photo</button>
+   
+  </div>
+  
+</div>
+
+
 <div id="expend" data-role="page" data-add-back-btn="true">
   <div class="header" data-role="header" data-position="fixed">
     <h1>Expenditure</h1>
@@ -174,48 +154,6 @@
   </div>
 </div>
 
-
-<!--<div id="auth" data-role="page" data-add-back-btn="true">
-  <div class="header" data-role="header" data-position="fixed">
-    <h1>Login</h1>
-  </div>
-
-  <div data-role="content">
-    
-    <a href="/auth/twitter"  rel="external" data-role="button" data-iconpos="right" class="social_login twitter_login">Twitter</a>
-    <a href="/auth/facebook" rel="external" data-role="button" data-iconpos="right" class="social_login facebook_login">Facebook</a>
-
-  </div>
-</div>-->
-
-
-
-<div style="hidden">
-
-<div id="ymwd_tm">
-  <div class="d{y10} year"></div><div class="d{y1}"></div>
-  <div class="sep"></div>
-  <div class="d{o10} month"></div><div class="d{o1}"></div>
-  <div class="sep"></div>
-  <div class="d{w10} week"></div><div class="d{w1}"></div>
-  <div class="sep"></div>
-  <div class="d{d10} day"></div><div class="d{d1}"></div>
-</div>
-
-<div id="hms_tm">
-  <div class="d{h10} hour"></div><div class="d{h1}"></div>
-  <div class="sep"></div>
-  <div class="d{m10} minute"></div><div class="d{m1}"></div>
-  <div class="sep"></div>
-  <div class="d{s10} second"></div><div class="d{s1}"></div>
-</div>
-
-<div id="entry_tm">
-  <div class="ui-block-a"><div class="monthentry"></div></div>
-  <div class="ui-block-b"><input type="text" class="amount" pattern="[0-9]*"></div>
-</div>
-
-</div>
 
 </body>
 </html>

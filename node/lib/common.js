@@ -7,7 +7,6 @@ exports.connect    = require('connect')
 exports.dispatch   = require('dispatch')
 exports.everyauth  = require('everyauth')
 exports.twitter    = require('twitter')
-exports.facebook   = require('facebook-client')
 
 exports.DataCapsule = require('./data-capsule')
 

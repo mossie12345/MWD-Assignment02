@@ -7,6 +7,8 @@ var connect    = common.connect
 var dispatch   = common.dispatch
 var everyauth  = common.everyauth
 
+//var Promise     = everyauth.Promise
+
 var DataCapsule = common.DataCapsule
 
 
@@ -15,7 +17,8 @@ var api    = common.api
 
 
 
-var dc, authcap
+var dc
+var authcap
 
 
 function init_datacapsule( callback ) {
@@ -43,8 +46,9 @@ function init_connect() {
   function make_promise( user, promise ) {
     authcap.save( user, function( err, user ){
       if( err ) return promise.fail(err)
-      promise.fulfill(user)
-    })
+         promise.fulfill(user)
+  }
+    )
 
     return promise
   }
@@ -52,17 +56,19 @@ function init_connect() {
   // turn on to see OAuth flow
   everyauth.debug = true
 
+
   everyauth.everymodule
-    .findUserById(function(id,callback){
-      authcap.load(id,function( err, user ){
-        if( err ) return callback(err);
-        callback(null,user)
-      })
+    .findUserById(function (id, callback) {
+        authcap.load(id, function (err, user) {
+            if (err) return callback(err);
+            callback(null, user)
+        })
     })
-    .moduleErrback( function (err, data) {
-      if( err ) console.dir(err);
-      throw err;
+    .moduleErrback(function (err, data) {
+        if (err) console.dir(err);
+       throw err;
     })
+
 
   everyauth.twitter
     .consumerKey( config.twitter.key )
@@ -80,29 +86,18 @@ function init_connect() {
       return make_promise( user, this.Promise() )
     })
     .redirectPath('/')
+	
+	
+	
 
-
-  everyauth.facebook
-    .appId( config.facebook.key )
-    .appSecret( config.facebook.secret )
-    .findOrCreateUser( function (session, accessToken, accessTokenExtra, fbUserMetadata) {
-
-      var user = { 
-        id:'fb-'+fbUserMetadata.id, 
-        username: fbUserMetadata.username, 
-        service:'facebook',
-        key:accessToken
-      }
-
-      return make_promise( user, this.Promise() )
-    })
-    .mobile(true)
-    .scope('publish_stream,email')
-    .redirectPath('/')
+var routes = function (app) {
+  // Define your routes here
+};
+	
+	
 
 
   var server = connect.createServer(
-    //connect.logger(),
     connect.bodyParser(),
     connect.cookieParser(),
     connect.query(),
