@@ -5,6 +5,10 @@ div.header {
 }
 
 
+div.photodetails {
+    display: inline-block;
+    vertical-align: top;
+}
 
 h1.ui-title {
     padding-top: 4px !important;
