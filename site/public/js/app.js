@@ -9,7 +9,6 @@ var bb = {
   view: {}
 }
 
-var location = '';
 
 
 bb.init = function() {
@@ -61,8 +60,6 @@ bb.init = function() {
 
                        alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude);
                        self.location = 'Latitude ' + position.coords.latitude + '\n' + 'Longitude  ' + position.coords.longitude
-                       this.location = 'Latitude ' + position.coords.latitude + '\n' + 'Longitude  ' + position.coords.longitude
-                       location = 'Latitude ' + position.coords.latitude + '\n' + 'Longitude  ' + position.coords.longitude
                    }, function (error) {
                        alert('Error occurred. Error code: ' + error.code + '\n' + 'Error Message ' + error.message);
                    });
@@ -148,7 +145,7 @@ bb.init = function() {
     socialmsg: function() {
         console.log('tweeting: Description = ' + app.model.details.description + 'Machine = ' + app.model.details.machine)
         
-        alert ('Location is' + location)
+        //alert ('Location is' + location)
 
         http.post('/user/socialmsg/' + app.model.details.category, {
             Description: app.model.details.description, Machine: app.model.details.machine,
