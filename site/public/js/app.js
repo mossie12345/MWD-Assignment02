@@ -58,25 +58,25 @@ bb.init = function() {
            if (navigator.geolocation) {
                navigator.geolocation.getCurrentPosition(function (position) {
 
-                   var geocoder = new google.maps.Geocoder();
+                 //  var geocoder = new google.maps.Geocoder();
 
-                   var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+                //   var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
 
-                   geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-                       var result = results[0];
-                       var state = '';
+               //    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+              //         var result = results[0];
+              //         var state = '';
 
-                       for (var i = 0, len = result.address_components.length; i < len; i++) {
-                           var ac = result.address_components[i];
+             //          for (var i = 0, len = result.address_components.length; i < len; i++) {
+             //              var ac = result.address_components[i];
 
-                           if (ac.types.indexOf('administrative_area_level_1') >= 0) {
-                               state = ac.short_name;
-                           }
-                       }
+            //               if (ac.types.indexOf('administrative_area_level_1') >= 0) {
+            //                   state = ac.short_name;
+           //                }
+           //            }
 
-                       alert('Currently in ' + state);
+            //           alert('Currently in ' + state);
 
-                   });
+          //         });
 
 
                        alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude);
