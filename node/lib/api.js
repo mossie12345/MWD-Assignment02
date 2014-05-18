@@ -101,7 +101,7 @@ exports.social_msg = function( req, res, next, message ) {
      //       console.log(response);
      //   });
 
-        var details = '  ' + req.body.Description + '  ' + req.body.Machine + '  '
+        var details = '  ' + req.body.Location + '  '  + req.body.Description + '  ' + req.body.Machine + '  '
         if (req.body.Photo1) { details = details + req.body.Photo1 + '  ' }
         if (req.body.Photo2) { details = details + req.body.Photo2 + '  ' }
         if (req.body.Photo3) { details = details + req.body.Photo3 + '  ' }

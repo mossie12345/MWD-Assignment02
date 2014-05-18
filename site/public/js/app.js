@@ -28,7 +28,7 @@ bb.init = function() {
 
    bb.model.Details = Backbone.Model.extend({
        defaults: {
-           country: 'test country',
+           location: 'test country',
            category: 'test cat',
            description: 'test desc',
            machine: 'test mach',
@@ -50,46 +50,19 @@ bb.init = function() {
        init: function () {
            var self = this
 
-          // if (!isMobile.any()) {
-         //      alert('Running on desktop' + '\n' + 'Cannot use geolocation');
-         //  }
-         //  else {
 
            if (navigator.geolocation) {
                navigator.geolocation.getCurrentPosition(function (position) {
 
-                 //  var geocoder = new google.maps.Geocoder();
-
-                //   var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
-
-               //    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
-              //         var result = results[0];
-              //         var state = '';
-
-             //          for (var i = 0, len = result.address_components.length; i < len; i++) {
-             //              var ac = result.address_components[i];
-
-            //               if (ac.types.indexOf('administrative_area_level_1') >= 0) {
-            //                   state = ac.short_name;
-           //                }
-           //            }
-
-            //           alert('Currently in ' + state);
-
-          //         });
-
-
-                       alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude);
+            
+                   //  alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude);
+                   self.location = 'Latitude ' + position.coords.latitude + '\n' + 'Longitude  ' + position.coords.longitude
                    }, function (error) {
                        alert('Error occurred. Error code: ' + error.code + '\n' + 'Error Message ' + error.message);
                    });
                } else {
                    alert('no geolocation support');
            }
-
-
-           //   }
-
 
 
        }
@@ -171,7 +144,7 @@ bb.init = function() {
         http.post('/user/socialmsg/' + app.model.details.category, {
             Description: app.model.details.description, Machine: app.model.details.machine,
             Photo1: app.model.details.photo1, Photo2: app.model.details.photo2,
-            Photo3: app.model.details.photo3, Photo4: app.model.details.photo4
+            Photo3: app.model.details.photo3, Photo4: app.model.details.photo4, Location:app.model.details.location
         }, function (res) {
         alert( res.ok ? 'Message sent!' : 'Unable to send message.')
       })
