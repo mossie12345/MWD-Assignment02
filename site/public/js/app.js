@@ -54,15 +54,18 @@ bb.init = function() {
          //      alert('Running on desktop' + '\n' + 'Cannot use geolocation');
          //  }
          //  else {
-               if (navigator.geolocation) {
-                   navigator.geolocation.getCurrentPosition(function (position) {
-                       alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude, position.country);
-                   }, function (error) {
-                       alert('Error occurred. Error code: ' + error.code + '\n' + 'Error Message ' + error.message);
-                   });
-               } else {
-                   alert('no geolocation support');
-               }
+
+         //  if (navigator.geolocation) {
+        //           navigator.geolocation.getCurrentPosition(function (position) {
+        //               alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude, position.country);
+        //           }, function (error) {
+        //               alert('Error occurred. Error code: ' + error.code + '\n' + 'Error Message ' + error.message);
+       //            });
+       //        } else {
+       //            alert('no geolocation support');
+       //    }
+
+
            //   }
 
 
