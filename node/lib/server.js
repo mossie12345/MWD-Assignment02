@@ -3,7 +3,7 @@
 
 var common = require('./common')
 
-var connectRoute = common.connectRoute
+//var connectRoute = common.connectRoute
 var connect    = common.connect
 var dispatch   = common.dispatch
 var everyauth  = common.everyauth
@@ -138,9 +138,9 @@ var routes = function (app) {
  // server.use(router)
 
 
-  connectRoute(function (app) {
-      app.post('/api/rest/tweet', api.rest.create)
-      });
+ // connectRoute(function (app) {
+ //     app.post('/api/rest/tweet', api.rest.create)
+ //     });
 
 
   server.listen( port )

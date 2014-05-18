@@ -2,7 +2,7 @@
 
 var buffer = require('buffer')
 
-exports.connectRoute = require("connect-route");
+//exports.connectRoute = require("connect-route");
 exports.connect    = require('connect')
 exports.dispatch   = require('dispatch')
 exports.everyauth  = require('everyauth')
