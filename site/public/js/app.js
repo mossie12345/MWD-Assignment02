@@ -59,6 +59,7 @@ bb.init = function() {
 
                        alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude);
                        self.location = 'Latitude ' + position.coords.latitude + '\n' + 'Longitude  ' + position.coords.longitude
+                       this.location = 'Latitude ' + position.coords.latitude + '\n' + 'Longitude  ' + position.coords.longitude
                    }, function (error) {
                        alert('Error occurred. Error code: ' + error.code + '\n' + 'Error Message ' + error.message);
                    });
