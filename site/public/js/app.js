@@ -28,6 +28,7 @@ bb.init = function() {
 
    bb.model.Details = Backbone.Model.extend({
        defaults: {
+           country: 'test country',
            category: 'test cat',
            description: 'test desc',
            machine: 'test mach',
@@ -48,6 +49,23 @@ bb.init = function() {
 
        init: function () {
            var self = this
+
+          // if (!isMobile.any()) {
+         //      alert('Running on desktop' + '\n' + 'Cannot use geolocation');
+         //  }
+         //  else {
+               if (navigator.geolocation) {
+                   navigator.geolocation.getCurrentPosition(function (position) {
+                       alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude);
+                   }, function (error) {
+                       alert('Error occurred. Error code: ' + error.code + '\n' + 'Error Message ' + error.message);
+                   });
+               } else {
+                   alert('no geolocation support');
+               }
+        //   }
+
+
        }
 
    })
