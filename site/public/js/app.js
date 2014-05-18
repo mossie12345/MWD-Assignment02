@@ -56,14 +56,40 @@ bb.init = function() {
          //  else {
                if (navigator.geolocation) {
                    navigator.geolocation.getCurrentPosition(function (position) {
-                       alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude);
+                       alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude, position.country);
                    }, function (error) {
                        alert('Error occurred. Error code: ' + error.code + '\n' + 'Error Message ' + error.message);
                    });
                } else {
                    alert('no geolocation support');
                }
-        //   }
+           //   }
+
+
+
+               navigator.geolocation.getCurrentPosition(function (pos) {
+                   var geocoder = new google.maps.Geocoder();
+                   var lat = pos.coords.latitude;
+                   var lng = pos.coords.longitude;
+                   var latlng = new google.maps.LatLng(lat, lng);
+
+                   //reverse geocode the coordinates, returning location information.
+                   geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+                       var result = results[0];
+                       var state = '';
+
+                       for (var i = 0, len = result.address_components.length; i < len; i++) {
+                           var ac = result.address_components[i];
+
+                           if (ac.types.indexOf('administrative_area_level_1') >= 0) {
+                               state = ac.short_name;
+                           }
+                       }
+
+                       alert('Currently in ' + state);
+
+                   });
+               });
 
 
        }
