@@ -55,28 +55,13 @@ bb.init = function() {
          //  }
          //  else {
 
-         //  if (navigator.geolocation) {
-        //           navigator.geolocation.getCurrentPosition(function (position) {
-        //               alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude, position.country);
-        //           }, function (error) {
-        //               alert('Error occurred. Error code: ' + error.code + '\n' + 'Error Message ' + error.message);
-       //            });
-       //        } else {
-       //            alert('no geolocation support');
-       //    }
+           if (navigator.geolocation) {
+               navigator.geolocation.getCurrentPosition(function (position) {
 
-
-           //   }
-
-
-
-               navigator.geolocation.getCurrentPosition(function (pos) {
                    var geocoder = new google.maps.Geocoder();
-                   var lat = pos.coords.latitude;
-                   var lng = pos.coords.longitude;
-                   var latlng = new google.maps.LatLng(lat, lng);
 
-                   //reverse geocode the coordinates, returning location information.
+                   var latlng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+
                    geocoder.geocode({ 'latLng': latlng }, function (results, status) {
                        var result = results[0];
                        var state = '';
@@ -92,7 +77,19 @@ bb.init = function() {
                        alert('Currently in ' + state);
 
                    });
-               });
+
+
+                       alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude);
+                   }, function (error) {
+                       alert('Error occurred. Error code: ' + error.code + '\n' + 'Error Message ' + error.message);
+                   });
+               } else {
+                   alert('no geolocation support');
+           }
+
+
+           //   }
+
 
 
        }
