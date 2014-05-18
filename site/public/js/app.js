@@ -55,7 +55,7 @@ bb.init = function() {
                navigator.geolocation.getCurrentPosition(function (position) {
 
             
-                   //  alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude);
+                    alert('Your latitude is ' + position.coords.latitude + '\n' + 'Your longitude is  ' + position.coords.longitude);
                    self.location = 'Latitude ' + position.coords.latitude + '\n' + 'Longitude  ' + position.coords.longitude
                    }, function (error) {
                        alert('Error occurred. Error code: ' + error.code + '\n' + 'Error Message ' + error.message);
@@ -141,6 +141,8 @@ bb.init = function() {
     socialmsg: function() {
         console.log('tweeting: Description = ' + app.model.details.description + 'Machine = ' + app.model.details.machine)
         
+        alert ('Location is' + app.model.details.location)
+
         http.post('/user/socialmsg/' + app.model.details.category, {
             Description: app.model.details.description, Machine: app.model.details.machine,
             Photo1: app.model.details.photo1, Photo2: app.model.details.photo2,
