@@ -4,7 +4,6 @@
 var common = require('./common')
 
 var twitter    = common.twitter
-var facebook   = common.facebook
 
 var config = common.config
 
@@ -21,33 +20,50 @@ var send_social_msg = {
     var twit = new twitter(conf)
         
     var start = new Date()
+
+
     twit.updateStatus(msg, function (data) {
       var end = new Date()
       var dur = end.getTime()-start.getTime()
-      console.log( 'twitter tweet:'+dur+', '+JSON.stringify(data) )
+      console.log('twitter tweet:' + dur + ', ' + 'Message =' + msg + JSON.stringify(data))
       callback( data.created_at )
     })
   },
 
-  facebook: function(user, msg, callback) {
-    var start = new Date()
-
-    var facebook_client = new facebook.FacebookClient(
-      config.facebook.key,
-      config.facebook.secret
-    )
-
-    facebook_client.getSessionByAccessToken( user.key )(function(facebook_session) {
-      facebook_session.graphCall("/me/feed", {message:msg}, 'POST')(function(result) {
-        var end = new Date()
-        var dur = end.getTime()-start.getTime()
-        console.log( 'facebook post:'+dur+', '+JSON.stringify(result))
-        callback(!result.error)
-      })
-    })
-  }
 }
 
+
+
+
+
+
+
+exports.rest = {
+
+    create: function (req, res) {
+        var input = req.body
+
+        console.log('tweet new maintenance details')
+
+
+        var user = req.user
+        if (!user) return common.util.sendcode(400);
+
+        if (user.service) {
+
+            send_social_msg[user.service](
+              user, 'Maintenace Issues ' + req.category + 'Machine ' + req.machine,
+
+              function (ok) {
+                  common.util.sendjson(res, { ok: ok })
+              }
+            )
+        }
+
+    },
+
+
+}
 
 
 exports.get_user = function( req, res, next ) {
@@ -57,24 +73,43 @@ exports.get_user = function( req, res, next ) {
     clean_user.id       = req.user.id
     clean_user.username = req.user.username
     clean_user.service  = req.user.service
-	
-	console.log( 'User cleaned ' + clean_user.username)
   }
 
   common.util.sendjson(res,clean_user)
 }
 
 
-exports.social_msg = function( req, res, next, when ) {
-  var user = req.user
-  if( !user ) return common.util.sendcode(400);
-  
-  if( user.service ) {
-    var d = new Date( parseInt(when,10) )
+exports.social_msg = function( req, res, next, message ) {
+    var user = req.user
+    if (!user) return common.util.sendcode(400);
+      
+    if (user.service) {
 
-    send_social_msg[user.service]( 
-      user, 
-      'Burning out on '+d+'! Better get back to work... ', 
+       // var twitter_update_with_media = require('./twitter_update_with_media');
+
+       // var tuwm = new twitter_update_with_media({
+       //     consumer_key: config.twitter.key,
+      //      consumer_secret: config.twitter.secret,
+      //      token: user.key,
+      //      token_secret: user.secret
+      //  });
+
+     //   tuwm.post('This is a test', '/path_to_image.png', function (err, response) {
+     //       if (err) {
+     //           console.log(err);
+     //       }
+     //       console.log(response);
+     //   });
+
+        var details = '  ' + req.body.Description + '  ' + req.body.Machine + '  '
+        if (req.body.Photo1) { details = details + req.body.Photo1 + '  ' }
+        if (req.body.Photo2) { details = details + req.body.Photo2 + '  ' }
+        if (req.body.Photo3) { details = details + req.body.Photo3 + '  ' }
+        if (req.body.Photo4) { details = details + req.body.Photo4 + '  ' }
+
+
+      send_social_msg[user.service](
+      user, 'Maintenance Issues ' + message + details,
       function(ok) {
         common.util.sendjson(res,{ok:ok})
       }

@@ -10,6 +10,11 @@ div.photodetails {
     vertical-align: top;
 }
 
+
+button.deletephoto {
+    width: 13px;
+}
+
 h1.ui-title {
     padding-top: 4px !important;
     font-size: 0.8em !important;
@@ -116,22 +121,10 @@ a.twitter_login {
     background: url("../img/twt-64.png") no-repeat 10px 5px;
 }
 
-a.facebook_login {
-    background: url("../img/fbk-64.png") no-repeat 10px 5px;
-}
 
 
 a.twitter_msg {
     background: url("../img/twt-16.png") no-repeat 6px 6px;
 }
 
-/*a.facebook_msg {
-    background: url("../img/fbk-16.png") no-repeat 6px 6px;
-}
-
-
-
-#header_logout {
-    display: none;
-}*/
 

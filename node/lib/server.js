@@ -3,11 +3,10 @@
 
 var common = require('./common')
 
+var connectRoute = common.connectRoute
 var connect    = common.connect
 var dispatch   = common.dispatch
 var everyauth  = common.everyauth
-
-//var Promise     = everyauth.Promise
 
 var DataCapsule = common.DataCapsule
 
@@ -91,7 +90,9 @@ function init_connect() {
 	
 
 var routes = function (app) {
-  // Define your routes here
+    // Define your routes here
+   // console.log ('setting up rest create')
+  //  app.post('/api/rest/tweet', api.rest.create)
 };
 	
 	
@@ -106,10 +107,11 @@ var routes = function (app) {
     everyauth.middleware(),
     dc.middleware(),
 
+    
     dispatch({
       '/user': {
         GET: api.get_user,
-        '/socialmsg/:when': {
+        '/socialmsg/:message': {
           POST: api.social_msg
         }
       }
@@ -123,9 +125,23 @@ var routes = function (app) {
       }
       else next();
     },
+
+
+
     
     connect.static( staticFolder )
   )
+
+ // var router = connect.router(function (app) {
+  //    app.post('/api/rest/tweet', api.rest.create)
+ // })
+ // server.use(router)
+
+
+  connectRoute(function (app) {
+      app.post('/api/rest/tweet', api.rest.create)
+      });
+
 
   server.listen( port )
 }

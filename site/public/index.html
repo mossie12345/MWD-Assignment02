@@ -22,7 +22,6 @@
   <script src="js/underscore.js"></script>
   <script src="js/backbone.js"></script>
   <script src="js/util.js"></script>
- <!-- <script src="js/data-capsule-client.js"></script> -->
   <script src="js/app.js"></script>
   
   <script type="text/javascript">
@@ -80,13 +79,13 @@
   <div data-role="content">  
   
 	  <p class="formfield">
-		<label for="textarea">Repair Description</label>
-		<textarea id="textarea" rows="5" cols="10"> </textarea>
+		<label for="repairs_desc">Repair Description</label>
+		<textarea id="repairs_desc" rows="5" cols="10"> </textarea>
 	  </p>
 	  
 	  <p class="formfield">	  
-		  <label for="machines">Select Machine</label>
-		  <select id="machines">
+		  <label for="repairs_machines">Select Machine</label>
+		  <select id="repairs_machines">
 			  <option value="machine1">Machine 1</option>
 			  <option value="machine2">Machine 2</option>
 			  <option value="machine3">Machine 3</option>
@@ -98,27 +97,28 @@
 	
         <div id="repairpics1" class="photodetails">
 	        <input id="repairs_photo_1" type="file" accept="image/*" capture="camera"> 
-            <button id="repairs_delete_1">Delete Photo</button>
+            <a id="repairs_delete_1" data-role="button" class="deletephoto">Delete Photo</a>
         </div>
 
         <div id="repairpics2" class="photodetails">
             <input id="repairs_photo_2" type="file" accept="image/*" capture="camera"> 
-            <button id="repairs_delete_2">Delete Photo</button>
+            <a id="repairs_delete_2" data-role="button"class="deletephoto">Delete Photo</a>
         </div>
 
         <div id="repairpics3" class="photodetails">
             <input id="repairs_photo_3" type="file" accept="image/*" capture="camera"> 
-            <button id="repairs_delete_3">Delete Photo</button>
+            <a id="repairs_delete_3" data-role="button"class="deletephoto">Delete Photo</a>
         </div>
 
         <div id="repairpics4" class="photodetails">
             <input id="repairs_photo_4" type="file" accept="image/*" capture="camera"> 
-            <button id="repairs_delete_4">Delete Photo</button>
+            <a id="repairs_delete_4"data-role="button"class="deletephoto">Delete Photo</a>
 		 </div>
-        <!--<button id="repairs_snap" class="snap">Take Photo</button>
-		<img src="" id="repairs_photo1" width="640" height="480"></img>	
-		<button id="repairs_delete">Delete Photo</button>  -->
-   
+         
+  </div>
+
+  <div data-role="controlgroup" data-type="horizontal" class="minibuttons">
+      <a id="social_msg_twitter"  data-role="button" data-iconpos="right" class="social_msg twitter_msg ui-corner-right ui-corner-left">tweet</a>
   </div>
   
 </div>
@@ -132,13 +132,13 @@
   <div data-role="content">  
   
 	  <p class="formfield">
-		<label for="textarea">Fault Description</label>
-		<textarea id="textarea1" rows="5" cols="10"> </textarea>
+		<label for="failures_desc">Failure Description</label>
+		<textarea id="failures_desc" rows="5" cols="10"> </textarea>
 	  </p>
 	  
 	  <p class="formfield">	  
-		  <label for="machines">Select Machine</label>
-		  <select id="Select1">
+		  <label for="failures_machines">Select Machine</label>
+		  <select id="failures_machines">
 			  <option value="machine1">Machine 1</option>
 			  <option value="machine2">Machine 2</option>
 			  <option value="machine3">Machine 3</option>
@@ -148,29 +148,34 @@
 		  </select> 
 	 </p>
 	
-	    <input type="file" accept="image/*" capture="camera">
-		<button id="failures_snap" class="snap">Take Photo</button>
-		<img id="failures_photo" width="640" height="480"></img>	
-		<button id="failures_delete">Delete Photo</button>
+        <div id="Div1" class="photodetails">
+	        <input id="failures_photo_1" type="file" accept="image/*" capture="camera"> 
+            <button id="failures_delete_1" class="deletephoto">Delete Photo</button>
+        </div>
+
+        <div id="Div2" class="photodetails">
+            <input id="failures_photo_2" type="file" accept="image/*" capture="camera"> 
+            <button id="failures_delete_2"class="deletephoto">Delete Photo</button>
+        </div>
+
+        <div id="Div3" class="photodetails">
+            <input id="failures_photo_3" type="file" accept="image/*" capture="camera"> 
+            <button id="failures_delete_3"class="deletephoto">Delete Photo</button>
+        </div>
+
+        <div id="Div4" class="photodetails">
+            <input id="failures_photo_4" type="file" accept="image/*" capture="camera"> 
+            <button id="failures_delete_4"class="deletephoto">Delete Photo</button>
+		 </div>
    
+  </div>
+
+  <div data-role="controlgroup" data-type="horizontal" class="minibuttons">
+      <a id="A1"  data-role="button" data-iconpos="right" class="social_msg twitter_msg ui-corner-right ui-corner-left">tweet</a>
   </div>
   
 </div>
 
-
-<div id="expend" data-role="page" data-add-back-btn="true">
-  <div class="header" data-role="header" data-position="fixed">
-    <h1>Expenditure</h1>
-  </div>
-
-  <div data-role="content">
-    <div id="expend_list" class="ui-grid-a">
-    </div>
-
-    <h3>Last month is carried forward</h3>
-    <a id="expend_more" data-role="button" style="font-size:0.9em">Add Month</a>
-  </div>
-</div>
 
 
 </body>
